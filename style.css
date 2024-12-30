@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap');
+
+:root{
+    --primary-color: #7f5af0;
+    --background-color: #16161a;
+    --background-color-light: #f1f1f1;
+    --text-color: #fffffe;
+    --text-color-light: #16161a;
+    --glass-color: rgba(255, 255, 255, 0.1);
+    --glass-primary-color: rgba(127, 90, 240, 0.25);
+}
+
+body{
+    background-color: var(--background-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.color-primary{
+    color: var(--primary-color);
+}
+
+a.navbar-brand{
+    color: var(--text-color) !important;
+}
+
+a.nav-link{
+    color: var(--text-color) !important;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a.nav-link:hover{
+    color: var(--primary-color) !important;
+    text-decoration: underline;
+}
+
+p, h1, h2, h3, h4, h5, h6{
+    color: var(--text-color) !important;
+}
+
+.shadow-white{
+    box-shadow: 0 0 10px rgba(231, 231, 231, 0.1);
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+.fs-xl{
+    font-size: 3.5rem;
+}
+
+.sosmed{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.sosmed .item__sosmed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.sosmed .item__sosmed:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.py-xl {
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+.line-primary{
+    width: 50px;
+    padding: 2px;
+    background-color: var(--primary-color);
+}
+
+.card{
+    cursor: pointer;
+    background-color: transparent !important;
+    transition: all 0.3s;
+}
+
+.skill .card{
+    border: solid 1px var(--primary-color) !important;
+    height: 100px !important;
+}
+
+
+.row .col-lg-3{
+    height:200px !important;
+}
+
+.skill .card .hidden {
+    opacity: 0;
+    max-height: 0; 
+    visibility: hidden;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.skill .card:hover .hidden {
+    opacity: 1;
+    max-height: 100px;
+    visibility: visible;
+    color: var(--primary-color) !important;
+}
+
+.skill .card img{
+    transition: all 0.3s;
+}
+
+.skill .card:hover img{
+    transform: scale(1.4);
+    transition: all 0.3s;
+}
+
+.card.glass{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    width: 25rem;
+    height: 22rem;
+}
+
+.card.glass:hover{
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.05);
+}
+
+.btn-primary{
+    background-color: var(--primary-color) !important;
+    border: none !important;
+}
+
+.btn-primary:hover{
+    background-color: #6c4ff0 !important;
+}
+
+.glass img{
+    height: 160px;
+}
+
+.glass-primary-active{
+    background: rgba( 127, 90, 240, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius:5px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+}
+
+.glass-primary{
+    background-color: transparent;
+    border: none;
+    color: gray;
+}
+
+.glass-primary:hover, .glass-primary-active:hover{
+    color: white;
+}
+
+.theme__pointer{
+    color: var(--primary-color);
+}
+
+.navbar-toggler{
+    color: var(--text-color) !important;
+}
+
+/* tablet */
+@media (max-width: 768px) {
+    .card.glass{
+        width: 19rem;
+        height: 20rem;
+    }
+    
+}
