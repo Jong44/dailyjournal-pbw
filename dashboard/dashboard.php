@@ -18,7 +18,7 @@ $jumlah_article = $hasil1->num_rows;
                         <h5 class="card-title"><i class="bi bi-newspaper"></i> Article</h5> 
                     </div>
                     <div class="p-3">
-                        <span class="badge rounded-pill fs-2" style="color:white"><?php echo $jumlah_article; ?></span>
+                        <span class="badge rounded-pill fs-2" style="color:black"><?php echo $jumlah_article; ?></span>
                     </div> 
                 </div>
             </div>

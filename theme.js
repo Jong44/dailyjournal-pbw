@@ -1,4 +1,4 @@
-let theme = localStorage.getItem("theme") || "dark";
+let theme = localStorage.getItem("theme") || "light";
 var themeId = document.getElementById("theme");
 
 const bodyTag = document.querySelector('body');
