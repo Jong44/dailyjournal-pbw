@@ -37,6 +37,12 @@
                         <a class="nav-link" href="admin.php?page=article">Article</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="admin.php?page=gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.php?page=profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
                         <div class="nav-link">
                             <div class="theme__pointer" onclick="changeTheme()" id="theme">
 

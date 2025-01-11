@@ -9,6 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/860ae798ee.js" crossorigin="anonymous"></script>
+    <style>
+        .card-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 
 <body class="bg-dark">
@@ -37,7 +44,7 @@
                     <li class="nav-item">
                         <div class="nav-link">
                             <div class="theme__pointer" onclick="changeTheme()" id="theme">
-                
+
                             </div>
                         </div>
                     </li>
@@ -79,11 +86,11 @@
         </section>
         <section class="py-xl skill" id="skills">
             <div class="container-fluid px-5">
-               <div class=" d-flex gap-2">
+                <div class=" d-flex gap-2">
                     <hr class="line-primary">
                     <h5 class="fs-3 fw-bold">Skils</h5>
-               </div>
-               <p class="fs-6">Berikut adalah beberapa skill yang saya kuasai</p>
+                </div>
+                <p class="fs-6">Berikut adalah beberapa skill yang saya kuasai</p>
             </div>
             <div class="container-fluid px-5 py-4">
                 <div class="row gap-y-3" id="card-skill">
@@ -99,12 +106,97 @@
                 <div class="d-flex gap-2">
                     <button href="#" class="glass-primary-active px-4 py-2" id="tab-website" onclick="handleClassTabWeb()">Website</button>
                     <button href="#" class="glass-primary px-4 py-2" id="tab-mobile" onclick="handleClassTabMobile()">Mobile</button>
-                </div>  
-            </div>
-            <div class="container-fluid px-5">
-                <div class="row gap-y-3 justify-content-center"  id="card-portofolio">
                 </div>
             </div>
+            <div class="container-fluid px-5">
+                <div class="row gap-y-3 justify-content-center" id="card-portofolio">
+                </div>
+            </div>
+        </section>
+        <section class="py-xl ">
+            <div class="container-fluid px-5 mb-4">
+                <div class=" d-flex gap-2 mb-5">
+                    <hr class="line-primary">
+                    <h5 class="fs-3 fw-bold">Artikel</h5>
+                </div>
+            </div>
+
+            <div class="container-fluid px-5">
+                <div class="row gap-y-3 justify-content-center gap-5">
+                    <?php
+
+                    include 'koneksi.php';
+
+                    $sql = "SELECT * FROM article ORDER BY tanggal";
+                    $hasil = $conn->query($sql);
+
+                    while ($row = $hasil->fetch_assoc()) {
+                    ?>
+
+
+                        <div class="card" style="width: 25rem;">
+                            <?php
+                            if ($row["gambar"] != '') {
+                                if (file_exists('assets/images/' . $row["gambar"] . '')) {
+                            ?>
+                                    <img src="assets/images/<?= $row["gambar"] ?>" class="card-img-top">
+                            <?php
+                                }
+                            }
+                            ?>
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $row["judul"] ?></h5>
+                                <p class="card-text "><?= $row["isi"] ?></p>
+                                <p class="card-text"><small class="text-body-secondary"><br>oleh : <?= $row["username"] ?></small></p>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="py-xl ">
+            <div class="container-fluid px-5 mb-4">
+                <div class=" d-flex gap-2 mb-5">
+                    <hr class="line-primary">
+                    <h5 class="fs-3 fw-bold">Gallery</h5>
+                </div>
+            </div>
+
+            <div class="container-fluid px-5">
+                <div class="row gap-y-3 justify-content-center gap-5">
+                    <?php
+
+                    include 'koneksi.php';
+
+                    $sql = "SELECT * FROM gallery ORDER BY tanggal";
+                    $hasil = $conn->query($sql);
+
+                    while ($row = $hasil->fetch_assoc()) {
+                    ?>
+
+
+                        <div class="card" style="width: 25rem;">
+                            <?php
+                            if ($row["gambar"] != '') {
+                                if (file_exists('assets/images/' . $row["gambar"] . '')) {
+                            ?>
+                                    <img src="assets/images/<?= $row["gambar"] ?>" class="card-img-top">
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+
+
         </section>
     </main>
 
@@ -122,76 +214,75 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    
-        <script>
-            const dataSkill = [
-                {
-                    icon: './assets/icons/html-5.svg',
-                    title: 'HTML',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/css.svg',
-                    title: 'CSS',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/javascipt.svg',
-                    title: 'Javascript',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/php.svg',
-                    title: 'PHP',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/laravel.svg',
-                    title: 'Laravel',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/react.svg',
-                    title: 'React',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/vue-js.svg',
-                    title: 'Vue',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/node-js.svg',
-                    title: 'NodeJS',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/spring-boot.svg',
-                    title: 'Laravel',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/flutter.svg',
-                    title: 'React',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/next-js.svg',
-                    title: 'NextJS',
-                    level: 'Intermediate'
-                },
-                {
-                    icon: './assets/icons/tailwind.svg',
-                    title: 'Tailwind',
-                    level: 'Intermediate'
-                },
-            ];
-    
-            function getData() {
-                const cardSkill = document.getElementById('card-skill');
-                const cardPortofolio = document.getElementById('card-portofolio');
-                dataSkill.forEach((item) => {
-                    cardSkill.innerHTML += `
+
+    <script>
+        const dataSkill = [{
+                icon: './assets/icons/html-5.svg',
+                title: 'HTML',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/css.svg',
+                title: 'CSS',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/javascipt.svg',
+                title: 'Javascript',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/php.svg',
+                title: 'PHP',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/laravel.svg',
+                title: 'Laravel',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/react.svg',
+                title: 'React',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/vue-js.svg',
+                title: 'Vue',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/node-js.svg',
+                title: 'NodeJS',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/spring-boot.svg',
+                title: 'Laravel',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/flutter.svg',
+                title: 'React',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/next-js.svg',
+                title: 'NextJS',
+                level: 'Intermediate'
+            },
+            {
+                icon: './assets/icons/tailwind.svg',
+                title: 'Tailwind',
+                level: 'Intermediate'
+            },
+        ];
+
+        function getData() {
+            const cardSkill = document.getElementById('card-skill');
+            const cardPortofolio = document.getElementById('card-portofolio');
+            dataSkill.forEach((item) => {
+                cardSkill.innerHTML += `
                         <div class="col-md-3 mb-4">
                             <div class="card text-white py-3 px-4 d-flex flex-row gap-4 align-items-center">
                                 <img src="${item.icon}" alt="" width="15%">
@@ -202,11 +293,11 @@
                             </div>
                         </div>
                     `;
-                });
-                
-            }
-            getData();
-        </script>
+            });
+
+        }
+        getData();
+    </script>
 </body>
 
 </html>
