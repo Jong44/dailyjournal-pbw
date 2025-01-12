@@ -165,34 +165,46 @@
                     <h5 class="fs-3 fw-bold">Gallery</h5>
                 </div>
             </div>
-
             <div class="container-fluid px-5">
-                <div class="row gap-y-3 justify-content-center gap-5">
-                    <?php
-
-                    include 'koneksi.php';
-
-                    $sql = "SELECT * FROM gallery ORDER BY tanggal";
-                    $hasil = $conn->query($sql);
-
-                    while ($row = $hasil->fetch_assoc()) {
-                    ?>
-
-
-                        <div class="card" style="width: 25rem;">
-                            <?php
-                            if ($row["gambar"] != '') {
-                                if (file_exists('assets/images/' . $row["gambar"] . '')) {
-                            ?>
-                                    <img src="assets/images/<?= $row["gambar"] ?>" class="card-img-top">
-                            <?php
-                                }
-                            }
-                            ?>
-                        </div>
-                    <?php
-                    }
-                    ?>
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <?php
+                        $sql = "SELECT * FROM gallery";
+                        $hasil = $conn->query($sql);
+                        $i = 0;
+                        while ($row = $hasil->fetch_assoc()) {
+                        ?>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $i ?>" class="<?= $i == 0 ? 'active' : '' ?>"></button>
+                        <?php
+                            $i++;
+                        }
+                        ?>
+                    </div>
+                    <div class="carousel-inner">
+                        <?php 
+                        $sql = "SELECT * FROM gallery";
+                        $hasil = $conn->query($sql);
+                        $i = 0;
+                        while ($row = $hasil->fetch_assoc()) {
+                        ?>
+                            <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
+                                <div class="d-flex justify-content-center">
+                                    <img src="assets/images/<?= $row["gambar"] ?>" class="d-block w-50" alt="...">
+                                </div>
+                            </div>
+                        <?php
+                            $i++;
+                        }
+                        ?>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
 
